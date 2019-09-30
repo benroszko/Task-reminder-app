@@ -1,0 +1,22 @@
+<div>
+    <ng-container *ngIf="toDoTasks.length > 0; else noTask" >
+        <h3 [ngStyle]="{color: getColor()}">TO DO LIST:</h3>
+
+        <ul>
+            <li *ngFor="let task of toDoTasks | sortByName; let odd = odd" 
+                class="flex-container" [ngClass]="{'odd-li': odd}">
+                {{task.name | modify: '!'}}
+
+                <div class="flex-el">
+                    <button class="btn comic-sans" type="button" (click)="done(task)">Done</button>
+                    <button class="btn comic-sans" type="button" (click)="delete(task)">Remove</button>
+                </div>
+            </li>
+        </ul>
+
+    </ng-container>
+
+    <ng-template #noTask>
+        <h3>You have no task to do!</h3>
+    </ng-template>
+</div>

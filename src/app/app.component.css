@@ -1,0 +1,22 @@
+.container{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: whitesmoke;
+    height: 100%;
+    color: black;
+}
+
+.task-container{
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px;
+}
+
+h1{
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    color: #000000;
+    text-shadow: 2px 2px 5px white; 
+    border-bottom: groove red;
+    background-image:linear-gradient(navy, purple);
+}

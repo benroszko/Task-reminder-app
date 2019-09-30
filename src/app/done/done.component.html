@@ -1,0 +1,10 @@
+<div>
+    <h3>DONE LIST ({{doneTasks.length}}):</h3>
+
+    <ul *ngIf="doneTasks.length > 0">
+        <li *ngFor="let task of doneTasks | sortByName"
+            [date]="task.deletion" appShowDate>
+            {{task.name | modify: '  ✓'}}
+        </li>
+    </ul>
+</div>
