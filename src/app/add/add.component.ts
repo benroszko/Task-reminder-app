@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TasksService } from '../services/tasks.service';
+import { TasksService } from '../services/tasks.service.firebase.store';
 import { Task } from '../model/task';
 
 @Component({
@@ -21,6 +21,7 @@ export class AddComponent {
     const newTask: Task = {
       name: this.task,
       creation: new Date(),
+      done: false,
     };
 
     this.taskService.addTask(newTask);
@@ -29,10 +30,3 @@ export class AddComponent {
 
 }
 
-{
-  "id": 0,
-  "name": "Mycie naczyn",
-  "creation": ,
-  "deletion": ,
-  "isDone": "false"
-}

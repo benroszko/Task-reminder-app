@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { TasksService } from '../services/tasks.service';
+import { Component } from '@angular/core';
+import { TasksService } from '../services/tasks.service.firebase.store';
 import { Task } from '../model/task';
 
 @Component({
@@ -26,6 +26,6 @@ export class ToDoComponent {
   }
 
   getColor(): string {
-    return this.taskService.toDoTasks.length > 5 ? 'red' : 'black';
+    return this.toDoTasks.length > 5 ? 'red' : 'black';
   }
 }
