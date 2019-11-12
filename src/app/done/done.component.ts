@@ -11,8 +11,8 @@ export class DoneComponent {
   doneTasks: Task[] = [];
 
   constructor(private taskService: TasksService) {
-    this.taskService.getDoneObsTasks().subscribe(
-      tasks => this.doneTasks = tasks
-    );
+    this.taskService.getTasks().subscribe((tasks: Task[]) => {
+      this.doneTasks = tasks.filter(task => task.isDone);
+  });
   }
 }

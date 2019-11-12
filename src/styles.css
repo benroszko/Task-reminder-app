@@ -4,14 +4,34 @@ body, html {
     margin: 0;
 }
 
-.btn{
+li {
+    margin: 5px 0;
+}
+
+.list-header {
+    text-shadow: 1px 1px 5px purple; 
+}
+
+.btn {
+    margin-right: 2px;
     background-color: purple;
     border: 2px solid red;
     border-radius: 25px;
     color: white;
+    cursor: pointer;
 }
 
-.comic-sans{
+.btn:hover {
+    background-color: pink;
+    border-color: red;
+}
+
+.btn:focus {
+    background-color: pink;
+    border-color: white;
+}
+
+.comic-sans {
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
 

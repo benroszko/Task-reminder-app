@@ -5,10 +5,12 @@ import { map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 function mapToTask(action) {
-  const data = action.payload.doc.data() as Task;
-  data.id = action.payload.doc.id;
+  const doc = action.payload.doc;
+  const data = doc.data() as Task;
+  data.id = doc.id;
   return data;
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,25 +27,26 @@ export class TasksService {
   }
 
   addTask(newTask: Task) {
-    this.allTasks.add(newTask).then(() =>
-      console.log('added')
-    );
+    this.allTasks.add(newTask).then(() => console.log('Added new task!'));
   }
 
   delete(task: Task) {
+    const taskToDelete = this.angularFireStore.doc(`Tasks/${task.id}`);
+    taskToDelete.delete().then(() => console.log('Deleted a task!'));
   }
 
   done(task: Task) {
+    const taskToUpdate = this.angularFireStore.doc(`Tasks/${task.id}`);
+    taskToUpdate.update({
+      isDone: true,
+      doneDate: new Date(),
+    }).then(() => console.log('done'));
   }
 
-  getToDoObsTasks(): Observable<Task[]> {
-    return this.allTasks.snapshotChanges().pipe( map((actions) => {
-      return actions.map(mapToTask).filter(value => !value.done);
+  getTasks(): Observable<Task[]> {
+    return this.allTasks.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(mapToTask);
     }));
   }
-
-  getDoneObsTasks(): Observable<Task[]> {
-    return this.allTasks.snapshotChanges().pipe( map((actions) => {
-      return actions.map(mapToTask).filter(value => value.done);
-    }));  }
 }

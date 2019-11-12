@@ -9,6 +9,9 @@ export class CheckedDirective implements OnInit {
 
   ngOnInit(): void {
     const li = this.el.nativeElement;
-    this.render.setStyle(li, 'background', 'purple');
+    this.render.setStyle(li, 'background', 'white');
+    this.render.setStyle(li, 'padding', '2px');
+    this.render.setStyle(li, 'border', '2px solid purple');
+    this.render.setStyle(li, 'border-radius', '10px');
   }
 }

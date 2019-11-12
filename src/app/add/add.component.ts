@@ -20,8 +20,8 @@ export class AddComponent {
 
     const newTask: Task = {
       name: this.task,
-      creation: new Date(),
-      done: false,
+      creationDate: new Date(),
+      isDone: false,
     };
 
     this.taskService.addTask(newTask);

@@ -16,6 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { environment } from '../environments/environment';
+import { SortByDatePipe } from './shared/sort-by-date.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { environment } from '../environments/environment';
     ShowDateDirective,
     ModifyPipe,
     SortByNamePipe,
+    SortByDatePipe,
   ],
   imports: [
     BrowserModule,

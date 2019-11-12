@@ -8,12 +8,11 @@ import { Task } from '../model/task';
   styleUrls: ['./to-do.component.css']
 })
 export class ToDoComponent {
-
   toDoTasks: Task[] = [];
 
   constructor(private taskService: TasksService) {
-    this.taskService.getToDoObsTasks().subscribe((tasks: Task[]) => {
-      this.toDoTasks = tasks;
+    this.taskService.getTasks().subscribe((tasks: Task[]) => {
+        this.toDoTasks = tasks.filter(task => !task.isDone);
     });
   }
 

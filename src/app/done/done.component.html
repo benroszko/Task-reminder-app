@@ -1,9 +1,9 @@
 <div>
-    <h3>DONE LIST ({{doneTasks.length}}):</h3>
+    <h3 class="list-header">DONE LIST ({{doneTasks.length}}):</h3>
 
     <ul *ngIf="doneTasks.length > 0">
-        <li *ngFor="let task of doneTasks | sortByName"
-            [date]="task.deletion" appShowDate>
+        <li *ngFor="let task of doneTasks | sortByDate"
+            [date]="task.doneDate" [isDone]="task.isDone" appShowDate appChecked>
             {{task.name | modify: '  ✓'}}
         </li>
     </ul>
