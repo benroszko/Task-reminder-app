@@ -1,4 +1,5 @@
 <div class="center">
-    <input class="comic-sans" type="text" placeholder="Your task" (keyup.enter)="addTask()" [(ngModel)]="task">
+    <button class="undo btn" (click)="this.undoService.undo()" onclick="this.blur()">Undo</button>
+    <input class="comic-sans activity-input" type="text" placeholder="Your task.." (keyup.enter)="addTask()" [(ngModel)]="task">
     <button class="btn comic-sans" (click)="addTask()">Add task</button>
 </div>

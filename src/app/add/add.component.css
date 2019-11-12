@@ -2,6 +2,10 @@
     text-align: center;
 }
 
-button {
-    margin-left: 5px;
+.activity-input {
+    margin: 0 10px;
+}
+
+.undo {
+    border-radius: 0;
 }

@@ -15,9 +15,11 @@ export class SortByDatePipe implements PipeTransform {
         return a.creationDate > b.creationDate ? 1 : -1;
       });
     } else {
-      return value.sort((a, b) => {
+      const resArr = value.sort((a, b) => {
         return a.doneDate > b.doneDate ? 1 : -1;
       });
+
+      return resArr.length <= 14 ? resArr : resArr.slice(resArr.length - 14);
     }
   }
 

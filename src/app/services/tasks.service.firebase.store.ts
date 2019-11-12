@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Task } from '../model/task';
 import { map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -18,29 +18,41 @@ export class TasksService {
 
   allTasks: AngularFirestoreCollection<Task>;
 
-  constructor(private angularFireStore: AngularFirestore) {
+  constructor(private afs: AngularFirestore) {
     this.getAllTasks();
   }
 
   getAllTasks() {
-    this.allTasks = this.angularFireStore.collection<Task>('/Tasks') as AngularFirestoreCollection<Task>;
+    this.allTasks = this.afs.collection<Task>('/Tasks') as AngularFirestoreCollection<Task>;
   }
 
-  addTask(newTask: Task) {
-    this.allTasks.add(newTask).then(() => console.log('Added new task!'));
+  async addTask(newTask: Task) {
+    const docRef = await this.allTasks.add(newTask);
+    console.log('Added new task!');
+
+    return docRef.id;
   }
 
   delete(task: Task) {
-    const taskToDelete = this.angularFireStore.doc(`Tasks/${task.id}`);
+    const taskToDelete = this.afs.doc(`Tasks/${task.id}`);
     taskToDelete.delete().then(() => console.log('Deleted a task!'));
   }
 
   done(task: Task) {
-    const taskToUpdate = this.angularFireStore.doc(`Tasks/${task.id}`);
+    const taskToUpdate = this.afs.doc(`Tasks/${task.id}`);
     taskToUpdate.update({
       isDone: true,
       doneDate: new Date(),
     }).then(() => console.log('done'));
+  }
+
+  undone(task: Task) {
+    const taskToUpdate = this.afs.doc(`Tasks/${task.id}`);
+    console.log(taskToUpdate);
+    taskToUpdate.update({
+      isDone: false,
+      doneDate: null,
+    }).then(() => console.log('undone'));
   }
 
   getTasks(): Observable<Task[]> {

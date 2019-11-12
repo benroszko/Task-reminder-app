@@ -1,6 +1,8 @@
 .container{
     font-family: "Comic Sans MS", cursive, sans-serif;
     background-color: whitesmoke;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100%;
     color: black;
 }
