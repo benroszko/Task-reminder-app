@@ -24,7 +24,16 @@ export class UndoService {
           this.taskService.delete(instruction.task);
           break;
         case 'delete':
-          this.taskService.addTask(instruction.task);
+          this.taskService.addTask(instruction.task).then(id => {
+            const recreatedTask: Task = this.commands
+                                          .map(cmd => cmd.task)
+                                          .find(task => task.name === instruction.task.name);
+
+            recreatedTask.id = id;
+          })
+          /*const recreatedTask: Task = this.commands
+                                      .map(cmd => cmd.task)
+                                      .find(task => task.name === instruction.task.name);*/
           break;
         default:
           this.taskService.undone(instruction.task);
