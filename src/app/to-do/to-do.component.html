@@ -2,12 +2,12 @@
     <ng-container *ngIf="toDoTasks.length > 0; else noTask" >
         <h3 class="list-header" [ngStyle]="{color: getColor()}">TO DO LIST ({{toDoTasks.length}}):</h3>
 
-        <ul>
+        <ul class="to-do-list">
             <li *ngFor="let task of toDoTasks | sortByDate" 
                 class="flex-container" [date]="task.creationDate" [isDone]="task.isDone" appShowDate>
                 {{task.name | modify: '!'}}
                 <div class="flex-div-btns">
-                    <div>
+                    <div class="flex-div-btns2">
                         <button class="btn comic-sans" type="button" (click)="done(task)">Done</button>
                         <button class="btn comic-sans" type="button" (click)="delete(task)">Remove</button>
                     </div>

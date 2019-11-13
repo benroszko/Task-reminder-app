@@ -9,6 +9,7 @@ export class SortByDatePipe implements PipeTransform {
 
   transform(value: Task[], ...args: any[]): any {
     const byCreation = !Boolean(value[0].doneDate);
+    console.log(args[0]);
 
     if (byCreation) {
       return value.sort((a, b) => {
@@ -19,7 +20,7 @@ export class SortByDatePipe implements PipeTransform {
         return a.doneDate > b.doneDate ? 1 : -1;
       });
 
-      return resArr.length <= 14 ? resArr : resArr.slice(resArr.length - 14);
+      return resArr.length <= args[0] ? resArr : resArr.slice(resArr.length - args[0]);
     }
   }
 

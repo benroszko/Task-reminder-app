@@ -1,4 +1,4 @@
-.container{
+.container {
     font-family: "Comic Sans MS", cursive, sans-serif;
     background-color: whitesmoke;
     background-repeat: no-repeat;
@@ -7,18 +7,33 @@
     color: black;
 }
 
-.task-container{
+.task-container {
     display: flex;
     justify-content: space-around;
     padding: 0 10px;
 }
 
-.title{
-    padding: 10px 0;
+.title {
     width: 100%;
-    text-align: center;
-    color: #000000;
-    text-shadow: 2px 2px 5px white; 
+    padding: 10px;
+    margin-bottom: 30px;
     border-bottom: groove red;
     background-image:linear-gradient(navy, purple);
+    color: #000000;
+    text-align: center;
+    text-shadow: 2px 2px 5px white; 
+}
+
+@media only screen and (max-width: 520px) {
+    .title {
+        font-size: 26px;
+    }
+
+    .task-container {
+        margin-top: 20px;
+    }
+
+    .title {
+        margin-bottom: 20px;
+    }
 }

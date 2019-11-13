@@ -22,6 +22,15 @@ export const environment = {
 };
 
 /*
+config: {
+      apiKey: 'xx',
+      authDomain: 'xx',
+      databaseURL: 'xx',
+      projectId: 'xx',
+      storageBucket: 'xx',
+      messagingSenderId: 'xx',
+      appId: 'xx',
+    }
 */
 /*
  * For easier debugging in development mode, you can import the following file

@@ -1,10 +1,10 @@
 <div>
-    <h3 class="list-header">DONE LIST ({{doneTasks.length}}):</h3>
+    <h3 class="list-header done-list-header">DONE LIST ({{doneTasks.length}}):</h3>
 
     <ul *ngIf="doneTasks.length > 0">
-        <li *ngFor="let task of doneTasks | sortByDate"
+        <li *ngFor="let task of doneTasks | sortByDate: this.maxDoneSize"
             [date]="task.doneDate" [isDone]="task.isDone" appShowDate appChecked>
-            {{task.name | modify: '  ✓'}}
+            {{task.name | modify: ' ✓'}}
         </li>
     </ul>
 </div>

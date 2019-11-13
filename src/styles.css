@@ -35,3 +35,22 @@ li {
     font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
+@media only screen and (max-width: 520px) {
+    .list-header {
+        font-size: 15px;
+    }   
+
+    li {
+        font-size: 12px;
+    }
+
+    .btn {
+        height: 18px;
+        width: 50px;
+        font-size: 10px;
+        border: 1px solid red;
+        margin-right: 2px;
+        margin-bottom: 2px;
+    }
+}
+
